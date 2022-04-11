@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
+import { url } from "../requestMethod.js";
 
 const Container = styled.div`
   display: flex;
@@ -19,8 +20,8 @@ const Products = ({ cat, filters, sort }) => {
       try {
         const response = await axios.get(
           cat
-            ? `http://localhost:4000/api/products?category=${cat}`
-            : "http://localhost:4000/api/products"
+            ? `${url}/products?category=${cat}`
+            : `${url}/products`
         );
         setProducts(response.data);
       } catch (err) {
