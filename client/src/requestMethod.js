@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const url = process.env.REACT_APP_BASE_URL;
+const production  = 'https://jeremiahs.herokuapp.com/';
+const development = 'http://localhost:4000/api';
+
+const url = process.env.NODE_ENV === 'development' ? development : production;
 const token = process.env.REACT_APP_TOKEN;
 
 export const publicRequest = axios.create({
