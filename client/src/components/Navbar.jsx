@@ -63,19 +63,21 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${tablet({ display: "none" })}
+  ${tablet({ flex: "0" })}
 `;
 
 const UserLoginInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${tablet({ display: "none" })}
 `;
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  ${tablet({ marginLeft: "-25px" })}
 `;
 
 const MobileMenuFlex = styled.div`
