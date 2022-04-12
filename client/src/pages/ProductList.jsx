@@ -61,7 +61,7 @@ const ProductList = () => {
           <Filter>
             <FilterText>Filter Products: </FilterText>
             <FormControl style={{ marginTop: "1rem" }} fullWidth>
-              <InputLabel>Color</InputLabel>
+              <InputLabel style={{backgroundColor: "white"}}>Color</InputLabel>
               <Select
                 name="color"
                 onChange={handleFilters}
@@ -78,7 +78,7 @@ const ProductList = () => {
             </FormControl>
             {!(cat === "Accessories" || cat === "Sneakers") && (
               <FormControl style={{ marginTop: "1rem" }} fullWidth>
-                <InputLabel>Size</InputLabel>
+                <InputLabel style={{backgroundColor: "white"}}>Size</InputLabel>
                 <Select name="size" onChange={handleFilters}>
                   <MenuItem value="all">Size</MenuItem>
                   <MenuItem value="S">S</MenuItem>
@@ -93,7 +93,7 @@ const ProductList = () => {
           <Filter>
             <FilterText>Sort Products: </FilterText>
             <FormControl style={{ marginTop: "1rem" }} fullWidth>
-              <InputLabel>Sort</InputLabel>
+              <InputLabel style={{backgroundColor: "white"}}>Sort</InputLabel>
               <Select onChange={(e) => setSort(e.target.value)}>
                 <MenuItem value="all">All</MenuItem>
                 <MenuItem value="newest">Newest</MenuItem>

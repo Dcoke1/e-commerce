@@ -8,11 +8,13 @@ import Forgot from "./pages/Forgot";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import { useSelector } from "react-redux";
+import Scrolltotop from "./components/ScrollToTop";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
   return (
     <Router>
+      <Scrolltotop />
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route path="/products" element={<ProductList/>} />
