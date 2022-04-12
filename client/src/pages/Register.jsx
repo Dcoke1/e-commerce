@@ -21,12 +21,13 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
-  background-color: white;
-  ${tablet({ width: "60%" })}
+  background-color: rgba(255,255,255,.9);
+  ${tablet({ width: "75%" })}
 `;
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300px;
+  ${tablet({ textAlign: "center" })}
 `;
 
 const SuccessTitle = styled.h1`

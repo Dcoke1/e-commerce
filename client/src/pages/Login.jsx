@@ -24,7 +24,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 30%;
   padding: 20px;
-  background-color: white;
+  background-color: rgba(255,255,255,.9);
   ${tablet({ width: "60%" })}
 `;
 const Title = styled.h1`
