@@ -26,7 +26,6 @@ const ImgContainer = styled.div`
 `;
 const Image = styled.img`
   width: 100%;
-  /* height: 90vh; */
   object-fit: cover;
 `;
 const InfoContainer = styled.div`
@@ -195,9 +194,9 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveOutlinedIcon onClick={() => handleQuantity("decr")} />
+              <RemoveOutlinedIcon style={{cursor: "pointer"}} onClick={() => handleQuantity("decr")} />
               <Amount>{quantity}</Amount>
-              <AddOutlinedIcon onClick={() => handleQuantity("incr")} />
+              <AddOutlinedIcon style={{cursor: "pointer"}} onClick={() => handleQuantity("incr")} />
             </AmountContainer>
             <BtnContainer>
               <Btn onClick={handleClick}>ADD TO CART</Btn>

@@ -24,7 +24,7 @@ const Info = styled.div`
 const Container = styled.div`
   flex: 1;
   margin: 5px;
-  min-width: 350px;
+  min-width: 325px;
   height: 350px;
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ const Icon = styled.div`
 const Product = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
+      <Image src={item.img} alt="product_picture" />
       <Info>
         <Icon>
           <ShoppingCartOutlined />
