@@ -30,3 +30,7 @@ a {
 .MuiInputLabel-root {
   background-color: white;
 }
+
+.bm-item {
+  outline: none!important;
+}

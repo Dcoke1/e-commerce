@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Product from "./Product";
 import axios from "axios";
 import { url } from "../requestMethod.js";
+import { useLocation } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -14,14 +15,14 @@ const Container = styled.div`
 const Products = ({ cat, filters, sort }) => {
   const [products, setProducts] = React.useState([]);
   const [filteredProducts, setFilteredProducts] = React.useState([]);
+  const location = useLocation();
+
 
   React.useEffect(() => {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          cat
-            ? `${url}/products?category=${cat}`
-            : `${url}/products`
+          cat ? `${url}/products?category=${cat}` : `${url}/products`
         );
         setProducts(response.data);
       } catch (err) {
@@ -66,6 +67,10 @@ const Products = ({ cat, filters, sort }) => {
     <Container>
       {cat
         ? filteredProducts.map((item) => <Product key={item._id} item={item} />)
+        : location.pathname === `/`
+        ? products
+            .slice(2, 10)
+            .map((item) => <Product key={item._id} item={item} />)
         : products.map((item) => <Product key={item._id} item={item} />)}
     </Container>
   );
