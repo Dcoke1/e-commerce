@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const production  = 'https://jeremiahs.herokuapp.com/';
+const production  = 'https://jeremiahs.herokuapp.com/api';
 const development = 'http://localhost:4000/api';
 
 export const url = process.env.NODE_ENV === 'development' ? development : production;
