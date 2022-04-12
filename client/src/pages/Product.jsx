@@ -6,6 +6,8 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { large, tablet, mobile_lg } from "../responsive";
@@ -121,12 +123,11 @@ const BtnContainer = styled.div`
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [ product, setProduct ] = React.useState({});
-  const [ quantity, setQuantity ] = React.useState(1);
-  const [ size, setSize ] = React.useState("");
-  const [ open, setOpen ] = React.useState(false);
+  const [product, setProduct] = React.useState({});
+  const [quantity, setQuantity] = React.useState(1);
+  const [size, setSize] = React.useState("");
+  const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
-
 
   React.useEffect(() => {
     const getProduct = async () => {
@@ -150,12 +151,11 @@ const Product = () => {
 
   const handleClick = () => {
     //add to Cart
-    if(size) { 
-      dispatch(addProduct({ ...product, quantity, size }))  
+    if (size) {
+      dispatch(addProduct({ ...product, quantity, size }));
     } else {
-      setOpen(true)
+      setOpen(true);
     }
- 
   };
 
   return (
@@ -179,24 +179,33 @@ const Product = () => {
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <Select onChange={(e) => setSize(e.target.value)}>
-                <MenuItem disabled>Size</MenuItem>
-                {product.size?.map(
-                  (s) =>
-                    !(s === "all") && (
-                      <MenuItem key={s} value={s}>
-                        {s}
-                      </MenuItem>
-                    )
-                )}
-              </Select>
+              <FormControl style={{ width: "125px" }} fullWidth>
+                <InputLabel>Size</InputLabel>
+                <Select onChange={(e) => setSize(e.target.value)}>
+                  <MenuItem disabled>Size</MenuItem>
+                  {product.size?.map(
+                    (s) =>
+                      !(s === "all") && (
+                        <MenuItem key={s} value={s}>
+                          {s}
+                        </MenuItem>
+                      )
+                  )}
+                </Select>
+              </FormControl>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveOutlinedIcon style={{cursor: "pointer"}} onClick={() => handleQuantity("decr")} />
+              <RemoveOutlinedIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("decr")}
+              />
               <Amount>{quantity}</Amount>
-              <AddOutlinedIcon style={{cursor: "pointer"}} onClick={() => handleQuantity("incr")} />
+              <AddOutlinedIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("incr")}
+              />
             </AmountContainer>
             <BtnContainer>
               <Btn onClick={handleClick}>ADD TO CART</Btn>
@@ -209,8 +218,9 @@ const Product = () => {
       </Wrapper>
       <Newsletter />
       <Footer />
-      {open &&
-      <SimpleSnackbar color={"error"} message={"Please choose a size"} />}
+      {open && (
+        <SimpleSnackbar color={"error"} message={"Please choose a size"} />
+      )}
     </Container>
   );
 };
