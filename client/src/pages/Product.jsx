@@ -104,6 +104,7 @@ const Amount = styled.span`
 `;
 const Btn = styled.button`
   width: 125px;
+  color: black;
   padding: 10px;
   border: 2px solid purple;
   background-color: white;
