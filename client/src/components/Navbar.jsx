@@ -55,7 +55,6 @@ const Center = styled.div`
 const Logo = styled.h1`
   font-weight: bold;
   margin: 0;
-
 `;
 
 const Right = styled.div`
@@ -158,16 +157,16 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
   return (
     <Container className={"font-link"}>
       <MobileMenu styles={{ ...mobileMenuStyles }}>
         <Wrapper>
-          <Link to="/">
-          <Logo>Jeremiahs.</Logo>
-          </Link>
+          <Logo>
+            <Link to="/">Jeremiahs.</Link>
+          </Logo>
           <MobileLeft style={{ marginTop: "8px" }}>
             <Language>EN</Language>
             <SearchContainer>
@@ -189,13 +188,15 @@ const Navbar = () => {
           <MobileMenuFlex>
             {loggedInUser ? (
               <MobileUserLoginInfo>
-                <span style={{ margin: "1rem 0" }}>{loggedInUser.email}</span>
+                <span style={{ margin: "1rem 0" }}>
+                  <Link to="/myaccount">{loggedInUser.email}</Link>
+                </span>
                 <LogoutOutlinedIcon onClick={handleLogout} />
               </MobileUserLoginInfo>
             ) : (
               <MobileUserLoginInfo style={{ fontSize: "1rem" }}>
                 <Link style={linkStyle} to="/register">
-                <MobileMenuItem>REGISTER</MobileMenuItem>
+                  <MobileMenuItem>REGISTER</MobileMenuItem>
                 </Link>
                 <Link style={linkStyle} to="/login">
                   <MobileMenuItem>SIGN IN</MobileMenuItem>
@@ -221,10 +222,15 @@ const Navbar = () => {
         <Right>
           {loggedInUser ? (
             <UserLoginInfo>
-              <span style={{ paddingRight: "1.5rem" }}>
-                {loggedInUser.email}
-              </span>
-              <LogoutOutlinedIcon style={{cursor: "pointer"}} onClick={() => dispatch(logout())} />
+              <Link to="/myaccount">
+                <span style={{ paddingRight: "1.5rem" }}>
+                  {loggedInUser.email}
+                </span>
+              </Link>
+              <LogoutOutlinedIcon
+                style={{ cursor: "pointer" }}
+                onClick={() => dispatch(logout())}
+              />
             </UserLoginInfo>
           ) : (
             <UserLoginInfo>

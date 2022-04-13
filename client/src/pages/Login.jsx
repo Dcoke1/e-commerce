@@ -24,7 +24,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 30%;
   padding: 20px;
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255,255,255,.8);
   ${tablet({ width: "60%" })}
 `;
 const Title = styled.h1`
@@ -75,7 +75,7 @@ const Login = () => {
   const handleClick = (e) => {
     e.preventDefault();
     if (username && password) {
-      login(dispatch, { username, password });
+      login(dispatch, { username, password },setOpen);
     } else {
       setOpen(true);
     }

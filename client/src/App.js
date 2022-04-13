@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Forgot from "./pages/Forgot";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
+import MyAccount from "./pages/MyAccount";
 import { useSelector } from "react-redux";
 import Scrolltotop from "./components/ScrollToTop";
 
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login/>} />
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register/>} />
         <Route path="/forgot" element={user ? <Navigate to="/" /> : <Forgot/>} />
+        <Route path="/myaccount" element={user ? <MyAccount /> : <Login/>} />
       </Routes>
     </Router>
   );

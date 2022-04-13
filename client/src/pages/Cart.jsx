@@ -8,6 +8,7 @@ import { tablet } from "../responsive";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearCart } from "../redux/cartRedux";
+import SimpleSnackbar from "../components/Toast";
 import React from "react";
 import { order } from "../redux/apiCalls";
 
@@ -149,35 +150,32 @@ const Btn = styled.button`
 `;
 
 const Cart = () => {
+  const [orders, setOrder] = React.useState();
+  const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const loggedInUser = useSelector((state) => state.user.currentUser);
 
-  
+  const newOrder = {
+    userId: loggedInUser && loggedInUser._id,
+    products: [...cart.products],
+    amount: cart.quantity,
+    address: "Test",
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newOrder = {
-      userId: loggedInUser?._id,
-      products: [{
-        productId: "62411a969ab90cc330d79dca",
-        quantity: 2
-      }],
-      amount: 9,
-      address: "1123 Address lane Cambridge, Florida 33025"
-    }
-    if (loggedInUser) {
-      order(newOrder);
+    if (loggedInUser && cart.products.length > 0) {
+      order(newOrder, setOrder, console.log);
+      emptyCart()
     } else {
-      console.log("Please log in to save order")
+      setOpen(true);
     }
   };
-
 
   const emptyCart = () => {
-    //Clear Cart
     dispatch(clearCart());
   };
-
 
   return (
     <Container>
@@ -190,7 +188,11 @@ const Cart = () => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Your Wishlist (0) </TopText>
+            {loggedInUser && (
+              <Link to="/myaccount">
+                <TopText>My Account</TopText>
+              </Link>
+            )}
             <TopText onClick={emptyCart}>
               Clear Cart ({cart.products.length})
             </TopText>
@@ -259,6 +261,18 @@ const Cart = () => {
             <Btn onClick={handleSubmit}>Check Out Now</Btn>
           </Summary>
         </Bottom>
+        {open && (
+          <SimpleSnackbar
+            message={"Please log in to save order"}
+            color={"error"}
+          />
+        )}
+        {orders && (
+          <SimpleSnackbar
+            message={"Order placed successfully"}
+            color={"success"}
+          />
+        )}
       </Wrapper>
       <Footer />
     </Container>

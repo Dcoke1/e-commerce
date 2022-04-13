@@ -7,8 +7,9 @@ import PinterestIcon from "@mui/icons-material/Pinterest";
 import MapIcon from "@mui/icons-material/Map";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
-import payments from "../assets/payments.png"
-import {large} from "../responsive"
+import payments from "../assets/payments.png";
+import { large } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -68,15 +69,16 @@ const ContactItem = styled.div`
 `;
 
 const Payment = styled.img`
-    width: 50%;
+  width: 50%;
 `;
-
 
 const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>Jeremiahs.</Logo>
+        <Link to="/">
+          <Logo>Jeremiahs.</Logo>
+        </Link>
         <Desc>
           Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in
           laying out print, graphic or web designs. The passage is attributed to
@@ -102,12 +104,22 @@ const Footer = () => {
       <Center>
         <Title>Useful Things</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Women Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
+          <ListItem>
+            <Link to="/">Home</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/cart">Cart</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/products">Mens Fashion</Link>
+          </ListItem>
+          <ListItem><Link to="/products/Bottoms">Mens Bottoms</Link></ListItem>
+          <ListItem>
+            <Link to="/products/Accessories">Accessories</Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/myaccount">My Account</Link>
+          </ListItem>
           <ListItem>Order Tracking</ListItem>
           <ListItem>Wish List</ListItem>
           <ListItem>Terms</ListItem>
@@ -116,13 +128,15 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <MapIcon style={{marginRight: "10px"}} /> 23 HackerNorth Dr, Chesterville 92451
+          <MapIcon style={{ marginRight: "10px" }} /> 23 HackerNorth Dr,
+          Chesterville 92451
         </ContactItem>
         <ContactItem>
-          <PhoneIcon style={{marginRight: "10px"}}/> +1 286 171 3303
+          <PhoneIcon style={{ marginRight: "10px" }} /> +1 286 171 3303
         </ContactItem>
         <ContactItem>
-          <MailOutlinedIcon style={{marginRight: "10px"}}/> contact@jermiahs.dev
+          <MailOutlinedIcon style={{ marginRight: "10px" }} />{" "}
+          contact@jermiahs.dev
         </ContactItem>
         <Payment src={payments} alt="Visa Master Card American Express" />
       </Right>
