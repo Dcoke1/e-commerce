@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import login_img from "../assets/login_img.png";
+import login_img1 from "../assets/login_img1.png";
 import { tablet, large } from "../responsive";
 // import { useSelector } from "react-redux";
 //import { publicRequest } from "../requestMethod";
@@ -13,7 +13,7 @@ const Container = styled.div`
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url(${login_img}) center;
+    url(${login_img1}) center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   ${large({ width: "60%" })}
 `;
 
