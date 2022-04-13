@@ -263,7 +263,7 @@ const Cart = () => {
         </Bottom>
         {open && (
           <SimpleSnackbar
-            message={"Please log in to save order"}
+            message={"Please sign in & choose order"}
             color={"error"}
           />
         )}
