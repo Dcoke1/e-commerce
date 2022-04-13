@@ -167,7 +167,7 @@ const Cart = () => {
     e.preventDefault();
     if (loggedInUser && cart.products.length > 0) {
       order(newOrder, setOrder, console.log);
-      emptyCart()
+      emptyCart();
     } else {
       setOpen(true);
     }
@@ -263,7 +263,7 @@ const Cart = () => {
         </Bottom>
         {open && (
           <SimpleSnackbar
-            message={"Please sign in & choose order"}
+            message={"Please sign in & select an order"}
             color={"error"}
           />
         )}
